@@ -1,0 +1,4 @@
+@keyframes mole {
+  from {transform: translate(50%, 20%);}
+  to {transform: translate(50%, -10%);}
+}
