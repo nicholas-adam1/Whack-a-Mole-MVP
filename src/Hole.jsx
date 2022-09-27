@@ -10,25 +10,30 @@ const StyledHole = styled.div`
   background-repeat: no-repeat;
 `
 
-const Hole = ({ setCurrentScore }) => {
+const Hole = ({ setScore, currentScore, playing }) => {
 
   const [mole, setMole] = useState(false);
   const [pointValue, setPointValue] = useState(0);
 
   useEffect(() => {
-    var popUpTime = (Math.random() * 10000) + 2000;
+    if (playing === true) {
+      var popUpTime = (Math.random() * 10000) + 2000;
 
-    const interval = setInterval(() => setMole(true), popUpTime);
+      const interval = setInterval(() => setMole(true), popUpTime);
 
-
-    return () => {
-      clearInterval(interval);
-    };
-
+      return () => {
+        clearInterval(interval);
+      };
+    }
   }, [])
 
   return (
-    <StyledHole onClick={() => {setMole(false)}}>
+    <StyledHole
+    onClick={() => {
+      setScore(currentScore => currentScore + pointValue);
+      setMole(false);
+    }}
+    >
       {mole === true ? <Mole setPointValue={setPointValue} setMole={setMole}/> : <div></div>}
     </StyledHole>
   )

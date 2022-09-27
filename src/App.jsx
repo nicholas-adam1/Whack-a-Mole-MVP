@@ -26,11 +26,13 @@ const StyledHeader = styled.h2`
 const StyledApp = styled.div`
   height: 100vh;
   width: 100vw;
+  position: fixed;
 `
 
 const App = () => {
 
   const [playing, setPlaying] = useState(false);
+  const [startScreen, setStartScreen] = useState(true);
   const [currentScore, setCurrentScore] = useState(0);
 
   return (
@@ -38,12 +40,12 @@ const App = () => {
       <StyledHeader>
         Whack-a-mole
       </StyledHeader>
-      {playing === false ?
-      <StartScreen play={() => setPlaying(true)}/> :
+      {startScreen === true ?
+      <StartScreen start={() => setStartScreen(false)}/> :
       <StyledContainer>
         <HighScores />
-        <Game setScore={setCurrentScore}play={playing}/>
-        <Timer currentScore={currentScore} play={playing}/>
+        <Game setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing}/>
+        <Timer currentScore={currentScore} playing={playing}/>
       </StyledContainer>
       }
 

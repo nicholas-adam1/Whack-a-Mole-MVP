@@ -44,13 +44,13 @@ const StyledPlayButton = styled.button`
   margin: auto;
 `
 
-const StartScreen = ({ play }) => {
+const StartScreen = ({ start }) => {
   return (
     <StyledStartScreen>
       <StyledModal>
         <h2>Whack-A-Mole!</h2>
         <div>Points system</div>
-        <StyledPlayButton onClick={play}></StyledPlayButton>
+        <StyledPlayButton onClick={start}></StyledPlayButton>
       </StyledModal>
     </StyledStartScreen>
   )

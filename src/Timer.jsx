@@ -14,7 +14,7 @@ const StyledTimer = styled.div`
   justify-content: space-around;
 `
 
-const Timer = ({ currentScore, play }) => {
+const Timer = ({ currentScore, playing }) => {
   const [seconds, setSeconds] = useState(0);
 
   const deadline = Date.now() + 60000;
@@ -29,7 +29,7 @@ const Timer = ({ currentScore, play }) => {
     const interval = setInterval(() => getTime(deadline), 1000);
 
     return () => clearInterval(interval);
-  }, [play])
+  }, [playing])
 
 
   return (

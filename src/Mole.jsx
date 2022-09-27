@@ -24,14 +24,35 @@ const Mole = ({ setPointValue, setMole }) => {
 
   var images = ['http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/63ad42cb71d9446.png',"http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/d1c662b9b02f581.png", "http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/6388eaa878d81a6.png", "https://www.nicepng.com/png/full/154-1549731_pixel-bomb-pixel-monster-gif.png"];
 
+  const [imageIndex, setImageIndex] = useState(weightedRand({0:0.35, 1:0.45, 2:0.1, 3:0.1}))
+
+  useEffect(() => {
+    if (imageIndex === '0') {
+      setPointValue(250)
+    }
+    if (imageIndex === '1') {
+      setPointValue(100)
+    }
+    if (imageIndex === '2') {
+      setPointValue(1000)
+    }
+    if (imageIndex === '3') {
+      setPointValue(-1000)
+    }
+
+    return () => {
+      setPointValue(0)
+    }
+  }, [])
+
 
 
   return (
     <StyledMole
     onAnimationEnd={() => {
-      setTimeout(setMole(false), (Math.random()*1000 + 1500))}
-    }
-    src={images[weightedRand({0:0.45, 1:0.35, 2:0.1, 3:0.1})]}
+      setMole(false)
+    }}
+    src={images[imageIndex]}
     />
   )
 }

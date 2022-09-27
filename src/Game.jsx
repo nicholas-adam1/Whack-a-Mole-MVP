@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Hole from './Hole.jsx';
 import styled from 'styled-components';
+import GameOverlay from './GameOverlay.jsx';
 
 const StyledGame = styled.div`
   display: flex;
@@ -12,11 +13,11 @@ const StyledGame = styled.div`
 `
 
 
-const Game = ({ setCurrentScore, play }) => {
+const Game = ({ setScore, currentScore, setPlaying, playing }) => {
 
   var holes = [];
   for (var i = 0; i < 9; i++) {
-    holes.push(<Hole key={i} setCurrentScore={setCurrentScore}/>);
+    holes.push(<Hole key={i} playing={playing} setScore={setScore} currentScore={currentScore}/>);
   }
 
   return (
@@ -24,7 +25,7 @@ const Game = ({ setCurrentScore, play }) => {
       {holes.map((hole) => (
         hole
       ))}
-
+      {playing === false ? <GameOverlay setPlaying={setPlaying}/> : <div></div>}
     </StyledGame>
   )
 }
