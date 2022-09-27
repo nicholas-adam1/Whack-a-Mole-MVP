@@ -13,7 +13,7 @@ const StyledGame = styled.div`
 `
 
 
-const Game = ({ setScore, currentScore, setPlaying, playing }) => {
+const Game = ({ setScore, currentScore, setPlaying, playing, gameSummary }) => {
 
   var holes = [];
   for (var i = 0; i < 9; i++) {
@@ -25,7 +25,7 @@ const Game = ({ setScore, currentScore, setPlaying, playing }) => {
       {holes.map((hole) => (
         hole
       ))}
-      {playing === false ? <GameOverlay setPlaying={setPlaying}/> : <div></div>}
+      {playing === false ? <GameOverlay setPlaying={setPlaying} gameSummary={gameSummary} currentScore={currentScore}/> : <div></div>}
     </StyledGame>
   )
 }

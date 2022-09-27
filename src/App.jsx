@@ -33,6 +33,7 @@ const App = () => {
 
   const [playing, setPlaying] = useState(false);
   const [startScreen, setStartScreen] = useState(true);
+  const [gameSummary, setGameSummary] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
 
   return (
@@ -44,8 +45,8 @@ const App = () => {
       <StartScreen start={() => setStartScreen(false)}/> :
       <StyledContainer>
         <HighScores />
-        <Game setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing}/>
-        <Timer currentScore={currentScore} playing={playing}/>
+        <Game setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing} gameSummary={gameSummary}/>
+        <Timer currentScore={currentScore} setPlaying={setPlaying} playing={playing} setGameSummary={setGameSummary}/>
       </StyledContainer>
       }
 

@@ -38,6 +38,17 @@ const StyledPlayButton = styled.button`
   margin: 0 auto;
 `
 
+const StyledReplayButton = styled.button`
+  background: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/03eca848ad914eb.png");
+  width: 10vw;
+  height: 10vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+`
+
 const StyledMole = styled.img`
   height: 50%;
   width: 20%;
@@ -50,25 +61,41 @@ const StyledRow = styled.div`
   width: 100%;
 `
 
-const GameOverlay = ({ setPlaying }) => {
+const GameOverlay = ({ setPlaying, gameSummary, currentScore }) => {
 
   return (
     <StyledOverlay>
-      <StyledModal>
-        <StyledRow>
-          <StyledMole src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/d1c662b9b02f581.png"/>
-          <div style={{marginTop: '5%', marginRight: '5%'}}>100 pts</div>
-          <StyledMole src='http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/63ad42cb71d9446.png'/>
-          <div style={{marginTop: '5%', marginRight: '5%'}}>250 pts</div>
-        </StyledRow>
-        <StyledRow>
-          <StyledMole src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/6388eaa878d81a6.png"/>
-          <div style={{marginTop: '5%', marginRight: '5%'}}>1000 pts</div>
-          <StyledMole src="https://www.nicepng.com/png/full/154-1549731_pixel-bomb-pixel-monster-gif.png"/>
-          <div style={{marginTop: '5%', marginRight: '5%'}}>-1000 pts</div>
-        </StyledRow>
-        <StyledPlayButton onClick={() => {setPlaying(true)}}></StyledPlayButton>
-      </StyledModal>
+        {gameSummary === true ?
+        <StyledModal>
+          <StyledRow>
+            Score: {currentScore}
+          </StyledRow>
+          <StyledRow>
+            Congratulations you placed ... on the leaderboard.
+          </StyledRow>
+          <StyledReplayButton onClick={() => {
+            setPlaying(true)
+            }}/>
+        </StyledModal>
+        :
+        <StyledModal>
+          <StyledRow>
+            <StyledMole src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/d1c662b9b02f581.png"/>
+            <div style={{marginTop: '5%', marginRight: '5%'}}>100 pts</div>
+            <StyledMole src='http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/63ad42cb71d9446.png'/>
+            <div style={{marginTop: '5%', marginRight: '5%'}}>250 pts</div>
+          </StyledRow>
+          <StyledRow>
+            <StyledMole src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/6388eaa878d81a6.png"/>
+            <div style={{marginTop: '5%', marginRight: '5%'}}>1000 pts</div>
+            <StyledMole src="https://www.nicepng.com/png/full/154-1549731_pixel-bomb-pixel-monster-gif.png"/>
+            <div style={{marginTop: '5%', marginRight: '5%'}}>-1000 pts</div>
+          </StyledRow>
+          <StyledPlayButton onClick={() => {
+            setPlaying(true)
+            }}></StyledPlayButton>
+        </StyledModal>
+        }
     </StyledOverlay>
   )
 }

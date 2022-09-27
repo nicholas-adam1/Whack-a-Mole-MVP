@@ -14,27 +14,35 @@ const StyledTimer = styled.div`
   justify-content: space-around;
 `
 
-const Timer = ({ currentScore, playing }) => {
+const Timer = ({ currentScore, setPlaying, playing, setGameSummary }) => {
   const [seconds, setSeconds] = useState(0);
 
-  const deadline = Date.now() + 60000;
+  const deadline = Date.now() + 61000;
 
   const getTime = () => {
     var time = deadline - Date.now();
 
-    setSeconds(Math.floor((time/1000) % 60));
+    if (Math.floor((time/1000) % 60) < 0) {
+      setGameSummary(true);
+      setPlaying(false);
+    } else {
+      setSeconds(Math.floor((time/1000) % 60));
+    }
   }
 
   useEffect(() => {
-    const interval = setInterval(() => getTime(deadline), 1000);
+    if (playing === true) {
+      const interval = setInterval(() => getTime(deadline), 1000);
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }
+
   }, [playing])
 
 
   return (
     <StyledTimer>
-      {seconds}
+      {playing === true ? seconds : 0}
       <div>
         Score:&nbsp;
         {currentScore}
