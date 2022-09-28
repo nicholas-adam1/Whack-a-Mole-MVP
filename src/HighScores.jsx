@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import url from '../config.js';
 
 const StyledHS = styled.div`
   text-align: center;
@@ -26,7 +27,7 @@ const HighScores = () => {
   useEffect(() => {
     axios({
       method: 'get',
-      url: 'http://localhost:3000/'
+      url: url
     })
     .then((response) => {
       console.log(response.data);

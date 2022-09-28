@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import url from '../config.js';
+
 
 const StyledTimer = styled.div`
   z-index: -2;
@@ -44,7 +46,7 @@ const Timer = ({ username, setScore, currentScore, setPlaying, playing, setGameS
     if (timeUp === true) {
       axios({
         method: 'post',
-        url: 'http://localhost:3000/',
+        url: url,
         data: {score: currentScore, username: username}
       })
       .then((response) => {
