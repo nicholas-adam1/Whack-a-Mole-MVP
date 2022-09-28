@@ -4,6 +4,7 @@ import Game from './Game.jsx'
 import Timer from './Timer.jsx'
 import styled from 'styled-components';
 import StartScreen from './StartScreen.jsx';
+import './app.css';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -27,6 +28,10 @@ const StyledApp = styled.div`
   height: 100vh;
   width: 100vw;
   position: fixed;
+  font-family: 'Holtwood One SC', serif;
+  color: gold;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 `
 
 const App = () => {
@@ -35,6 +40,7 @@ const App = () => {
   const [startScreen, setStartScreen] = useState(true);
   const [gameSummary, setGameSummary] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
+  const [username, setUsername] = useState('anonymous');
 
   return (
     <StyledApp>
@@ -42,11 +48,17 @@ const App = () => {
         Whack-a-mole
       </StyledHeader>
       {startScreen === true ?
-      <StartScreen start={() => setStartScreen(false)}/> :
+      <StartScreen start={(e) => {
+        e.preventDefault();
+        if (e.target.parentElement.childNodes[1].value !== '') {
+          setUsername(e.target.parentElement.childNodes[1].value);
+        }
+        setStartScreen(false);
+      }}/> :
       <StyledContainer>
         <HighScores />
         <Game setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing} gameSummary={gameSummary}/>
-        <Timer currentScore={currentScore} setPlaying={setPlaying} playing={playing} setGameSummary={setGameSummary}/>
+        <Timer username={username} setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing} setGameSummary={setGameSummary}/>
       </StyledContainer>
       }
 

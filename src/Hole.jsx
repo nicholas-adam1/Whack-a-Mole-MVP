@@ -16,15 +16,15 @@ const Hole = ({ setScore, currentScore, playing }) => {
   const [pointValue, setPointValue] = useState(0);
 
   useEffect(() => {
-    if (playing === true) {
-      var popUpTime = (Math.random() * 10000) + 2000;
 
-      const interval = setInterval(() => setMole(true), popUpTime);
+    var popUpTime = (Math.random() * 10000) + 2000;
 
-      return () => {
-        clearInterval(interval);
-      };
-    }
+    const interval = setInterval(() => setMole(true), popUpTime);
+
+    return () => {
+      clearInterval(interval);
+    };
+
   }, [])
 
   return (

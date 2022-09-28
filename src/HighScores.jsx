@@ -1,20 +1,50 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const StyledHS = styled.div`
-  width: 25vw;
   text-align: center;
   background-image: url("http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/cba309e5a2e177f.png");
   border-style: solid;
   border-width: 5px;
   border-radius: 12px;
   border-color: gold;
+  width: 25vw;
+  height: 50vh;
+  transform: translate(0, 25%);
+`
+
+const StyledScores = styled.div`
+  font-size: 14px;
+  line-height: 30px;
 `
 
 const HighScores = () => {
+
+  const [scores, setScores] = useState([]);
+
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/'
+    })
+    .then((response) => {
+      console.log(response.data);
+      setScores(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }, [])
+
   return (
     <StyledHS>
-      High scores
+      <h3>High Scores:</h3>
+      <StyledScores>
+        {scores.map((score) => (
+          <div key={score._id}>{score.username + ': ' + score.score}</div>
+        ))}
+      </StyledScores>
     </StyledHS>
   )
 }

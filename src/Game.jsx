@@ -25,7 +25,7 @@ const Game = ({ setScore, currentScore, setPlaying, playing, gameSummary }) => {
       {holes.map((hole) => (
         hole
       ))}
-      {playing === false ? <GameOverlay setPlaying={setPlaying} gameSummary={gameSummary} currentScore={currentScore}/> : <div></div>}
+      {playing === false ? <GameOverlay setPlaying={setPlaying} gameSummary={gameSummary} setScore={setScore} currentScore={currentScore}/> : <div></div>}
     </StyledGame>
   )
 }

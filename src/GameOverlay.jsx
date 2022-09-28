@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import './app.css';
 
 const StyledOverlay = styled.div`
   background: rgba(0, 0, 0, .5);
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 105vh;
-  transform: translate(-30%, -35%);
+  top: 50%; left: 50%;
+  width: 100vw; height: 130vh;
+  transform: translate(-50%, -50%);
   z-index: 100;
 `
 const StyledModal = styled.div`
   width: 40%;
-  height: 60%;
+  height: 50%;
   transform: translate(0%, 30%);
   margin: auto;
   text-align: center;
@@ -24,8 +23,6 @@ const StyledModal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  font-family: 'Holtwood One SC', serif;
-  color: gold;
 `
 const StyledPlayButton = styled.button`
   background: url("https://thestempedia.com/wp-content/uploads/2020/08/Start-button-sprite.png");
@@ -59,22 +56,30 @@ const StyledRow = styled.div`
   display: flex;
   height: 33%;
   width: 100%;
+
 `
 
-const GameOverlay = ({ setPlaying, gameSummary, currentScore }) => {
+const StyledScoreSummaryRow = styled.div`
+  height: 3%;
+  width: 90%;
+  margin: 0 auto;
+`
+
+const GameOverlay = ({ setPlaying, gameSummary, setScore, currentScore }) => {
 
   return (
     <StyledOverlay>
         {gameSummary === true ?
         <StyledModal>
-          <StyledRow>
+          <StyledScoreSummaryRow>
             Score: {currentScore}
-          </StyledRow>
-          <StyledRow>
+          </StyledScoreSummaryRow>
+          <StyledScoreSummaryRow>
             Congratulations you placed ... on the leaderboard.
-          </StyledRow>
+          </StyledScoreSummaryRow>
           <StyledReplayButton onClick={() => {
-            setPlaying(true)
+            setScore(0);
+            setPlaying(true);
             }}/>
         </StyledModal>
         :
