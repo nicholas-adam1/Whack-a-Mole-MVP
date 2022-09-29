@@ -41,6 +41,7 @@ const App = () => {
   const [gameSummary, setGameSummary] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
   const [username, setUsername] = useState('anonymous');
+  const [highScores, setHighScores] = useState([]);
 
   return (
     <StyledApp>
@@ -56,8 +57,8 @@ const App = () => {
         setStartScreen(false);
       }}/> :
       <StyledContainer>
-        <HighScores />
-        <Game setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing} gameSummary={gameSummary}/>
+        <HighScores highScores={highScores} setHighScores={setHighScores}/>
+        <Game highScores={highScores} setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing} gameSummary={gameSummary}/>
         <Timer username={username} setScore={setCurrentScore} currentScore={currentScore} setPlaying={setPlaying} playing={playing} setGameSummary={setGameSummary}/>
       </StyledContainer>
       }

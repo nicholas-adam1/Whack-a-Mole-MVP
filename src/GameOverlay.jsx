@@ -37,13 +37,14 @@ const StyledPlayButton = styled.button`
 
 const StyledReplayButton = styled.button`
   background: url("https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/03eca848ad914eb.png");
-  width: 10vw;
-  height: 10vh;
+  width: 40%;
+  height: 20%;
   background-size: 100%;
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
   margin: 0 auto;
+  margin-top: 30px;
 `
 
 const StyledMole = styled.img`
@@ -65,7 +66,7 @@ const StyledScoreSummaryRow = styled.div`
   margin: 0 auto;
 `
 
-const GameOverlay = ({ setPlaying, gameSummary, setScore, currentScore }) => {
+const GameOverlay = ({ highScores, setPlaying, gameSummary, setScore, currentScore }) => {
 
   return (
     <StyledOverlay>
@@ -75,7 +76,9 @@ const GameOverlay = ({ setPlaying, gameSummary, setScore, currentScore }) => {
             Score: {currentScore}
           </StyledScoreSummaryRow>
           <StyledScoreSummaryRow>
-            Congratulations you placed ... on the leaderboard.
+            {currentScore > highScores[5].score ? <div>Congratulations you made the leaderboard!</div>
+            :
+            <div>Nice try partner, but you did not make the leaderboard. Better luck next time!</div>}
           </StyledScoreSummaryRow>
           <StyledReplayButton onClick={() => {
             setScore(0);

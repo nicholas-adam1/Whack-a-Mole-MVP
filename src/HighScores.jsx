@@ -20,9 +20,7 @@ const StyledScores = styled.div`
   line-height: 30px;
 `
 
-const HighScores = () => {
-
-  const [scores, setScores] = useState([]);
+const HighScores = ({ highScores, setHighScores }) => {
 
   useEffect(() => {
     axios({
@@ -31,7 +29,7 @@ const HighScores = () => {
     })
     .then((response) => {
       console.log(response.data);
-      setScores(response.data);
+      setHighScores(response.data);
     })
     .catch((err) => {
       console.log(err);
@@ -42,7 +40,7 @@ const HighScores = () => {
     <StyledHS>
       <h3>High Scores:</h3>
       <StyledScores>
-        {scores.map((score) => (
+        {highScores.map((score) => (
           <div key={score._id}>{score.username + ': ' + score.score}</div>
         ))}
       </StyledScores>
