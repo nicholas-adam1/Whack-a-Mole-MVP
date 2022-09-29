@@ -19,7 +19,7 @@ const Hole = ({ setScore, currentScore, playing }) => {
 
   useEffect(() => {
 
-    var popUpTime = (Math.random() * 10000) + 2000;
+    var popUpTime = (Math.random() * 8000) + 2000;
 
     const interval = setInterval(() => setMole(true), popUpTime);
 

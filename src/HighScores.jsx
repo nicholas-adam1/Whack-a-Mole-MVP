@@ -16,8 +16,12 @@ const StyledHS = styled.div`
 `
 
 const StyledScores = styled.div`
-  font-size: 14px;
-  line-height: 30px;
+  font-size: 15px;
+  font-size: 1.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 65%;
 `
 
 const HighScores = ({ highScores, setHighScores }) => {
