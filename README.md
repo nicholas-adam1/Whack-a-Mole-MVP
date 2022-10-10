@@ -10,6 +10,6 @@ This repo is the minimum viable product of a 24 hour sprint to make a whack-a-mo
   * Styled Components
   
 ## Engineer
-Nicholas Adam
+[Nick Adam](https://github.com/nicholaspix)
 
 
