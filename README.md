@@ -9,7 +9,7 @@ This repository is the minimum viable product of a 24 hour sprint to make a whac
 ![Express](https://img.shields.io/badge/-Express-DCDCDC?logo=express&logoColor=black&style=flat-square)
 ![Vite](https://img.shields.io/badge/-Vite-8034af?logo=vite&logoColor=white&style=flat-square)
 ![Axios](https://img.shields.io/badge/-Axios-373747?logo=axios&logoColor=white&style=flat-square)
-![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=flat-square&logo=mongodb&logoColor=white)
 ![Styled Components](https://img.shields.io/badge/-Styled_Components-DB7093?logo=styled-components&logoColor=white&style=flat-square)
 
 ## Engineer
