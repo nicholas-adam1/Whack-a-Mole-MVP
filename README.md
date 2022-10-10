@@ -1,2 +1,15 @@
 # Whack-a-Mole-MVP
-Minimum viable product for a 24 hour sprint to make a whack-a-mole game application.
+This repo is the minimum viable product of a 24 hour sprint to make a whack-a-mole game application.
+
+## Tech Stack
+  * React
+  * Node.js
+  * Express
+  * Vite
+  * Axios
+  * Styled Components
+  
+## Engineer
+Nicholas Adam
+
+
