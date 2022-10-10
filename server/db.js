@@ -12,7 +12,6 @@ const Scores = mongoose.model('Scores', scoresSchema);
 var getAllScores = (callback) => {
   Scores.find({}).sort({score: -1}).limit(6).exec((err, response) => {
     if (err) {
-      console.log(err);
       callback(err, null);
     } else {
       callback(null, response);
@@ -23,7 +22,6 @@ var getAllScores = (callback) => {
 var addScore = (scoreData, callback) => {
   Scores.create(scoreData, (err, response) => {
     if (err) {
-      console.log(err);
       callback(err, null);
     } else {
       callback(null, response);
@@ -34,7 +32,6 @@ var addScore = (scoreData, callback) => {
 var deleteScore = (scoreData, callback) => {
   Scores.deleteOne(scoreData, (err, response) => {
     if (err) {
-      console.log(err);
       callback(err, null);
     } else {
       callback(null, response);

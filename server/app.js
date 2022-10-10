@@ -26,8 +26,6 @@ app.post('/', function (req, res) {
 
   var scoreData = req.body;
 
-  console.log(scoreData);
-
   db.addScore(scoreData, (err, response) => {
     if (err) {
       res.status(500).end()

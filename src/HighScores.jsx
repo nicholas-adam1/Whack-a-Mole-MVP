@@ -32,11 +32,10 @@ const HighScores = ({ highScores, setHighScores }) => {
       url: url
     })
     .then((response) => {
-      console.log(response.data);
       setHighScores(response.data);
     })
     .catch((err) => {
-      console.log(err);
+
     })
   }, [])
 
